@@ -1,0 +1,2 @@
+ docker run -d --name=grafana88 -p 3000:3000 grafana/grafana
+ docker run -d -p 9090:9090 -v ./prometheus.yml prom/prometheus

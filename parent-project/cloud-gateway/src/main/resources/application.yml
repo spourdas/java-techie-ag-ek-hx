@@ -1,0 +1,31 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: order-service
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/order/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: order-service
+                fallbackuri: forward:/orderFallback
+        - id: payment-service
+          uri: lb://PAYMENT-SERVICE
+          predicates:
+            - Path=/payment/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: payment-service
+                fallbackuri: forward:/paymentFallback
+
+
+
+
+
+
+logging:
+  level:
+    org.springframework: DEBUG
