@@ -1,6 +1,15 @@
 spring:
   cloud:
     config:
+      discovery:
+        serviceId: configserver
+        enabled: true
+      fail-fast: true
+      retry:
+        initial-interval: 2000
+        max-attempts: 20
+        multiplier: 3
       server:
         git:
-          uri: file://C:/Users/spour/learn/micro-services/java-techie-ag-ek-hx/parent-project/configrepo
+          uri: https://github.com/spourdas/SpringConfig
+
